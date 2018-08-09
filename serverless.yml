@@ -11,15 +11,20 @@
 #
 # Happy Coding!
 
-service: aws-nodejs # NOTE: update this with your service name
+service: crud-api
 
 # You can pin your service to only deploy with a specific Serverless version
 # Check out our docs for more details
 # frameworkVersion: "=X.X.X"
 
+plugins:
+  - serverless-offline
+
 provider:
   name: aws
   runtime: nodejs6.10
+  stage: dev
+  region: us-west-2
 
 # you can overwrite defaults here
 #  stage: dev
@@ -46,17 +51,31 @@ provider:
 #    variable1: value1
 
 # you can add packaging information here
-#package:
-#  include:
-#    - include-me.js
-#    - include-me-dir/**
+package:
+ include:
+   - features/**
+   - models/**
 #  exclude:
 #    - exclude-me.js
 #    - exclude-me-dir/**
 
 functions:
-  hello:
-    handler: handler.hello
+  getTodo:
+    handler: features/read.getTodo
+    # in the features folder, in the read.js file, 
+    # & the function is called 'read'
+    events: 
+      - http: 
+          path: todo
+          method: get
+  createTodo:
+    handler: features/create.createTodo
+    # in the features folder, in the read.js file, 
+    # & the function is called 'read'
+    events: 
+      - http: 
+          path: todo
+          method: post
 
 #    The following are a few example events you can configure
 #    NOTE: Please make sure to change your handler code to work with those events

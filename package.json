@@ -13,8 +13,8 @@
     "serverless-offline": "^3.25.7"
   },
   "dependencies": {
-    "pg": "^7.4.3",
-    "sequelize": "^4.38.0",
+    "pg": "6.4.2",
+    "sequelize": "3.30.4",
     "serverless": "^1.30.0"
   }
 }

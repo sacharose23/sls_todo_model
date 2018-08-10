@@ -59,7 +59,17 @@ package:
 #    - exclude-me.js
 #    - exclude-me-dir/**
 
+# ROUTES
 functions:
+  listTodos:
+    handler: features/read.listTodos
+    # in the features folder, in the read.js file, 
+    # & the function is called 'read'
+    events: 
+      - http: 
+          path: todos
+          method: get
+  
   getTodo:
     handler: features/read.getTodo
     # in the features folder, in the read.js file, 
@@ -68,6 +78,7 @@ functions:
       - http: 
           path: todo
           method: get
+
   createTodo:
     handler: features/create.createTodo
     # in the features folder, in the read.js file, 
@@ -76,6 +87,25 @@ functions:
       - http: 
           path: todo
           method: post
+  
+  deleteTodo:
+    handler: features/delete.deleteTodo
+    # in the features folder, in the read.js file, 
+    # & the function is called 'read'
+    events: 
+      - http: 
+          path: todo/{id} # path parameters
+          method: delete
+
+  updateTodo:
+    handler: features/update.updateTodo
+    # in the features folder, in the read.js file, 
+    # & the function is called 'read'
+    events: 
+      - http: 
+          path: todo/{id} # path parameters
+          method: patch # updating a single property on an already existing todo
+          # send a JSON payload w/ data that we'll use to update the todo
 
 #    The following are a few example events you can configure
 #    NOTE: Please make sure to change your handler code to work with those events

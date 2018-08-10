@@ -4,13 +4,8 @@ const Sequelize = require('sequelize');
 // create an instance of sequelize that'll be our DB connection
 // elephantsql endpoint
 const sequelize = new Sequelize(
-  'postgres://nnrznszh:nv-HXgeHu8WW9O3q7amNVk4QbyfPllVU@elmer.db.elephantsql.com:5432/nnrznszh'
+  "postgres://iiythpiu:4dsoq2SQ4Y7CuiL9dvHbc6z9EHa2Qp81@stampy.db.elephantsql.com:5432/iiythpiu"
 );
-
-/// AWS RDS endpoint
-// const sequelize = new Sequelize(
-//   'postgres://sacha:sacha123@todo-db.ctdqpenrkrnh.us-west-2.rds.amazonaws.com:5432/todo_db'
-// );
 
 // export sequelize in our model
 const todo = require('./models/todo')(sequelize, Sequelize);

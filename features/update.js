@@ -30,6 +30,14 @@ module.exports.updateTodo = (event, context, callback) => {
           // returns the todo id 
         })
       });
+    })
+    .catch(error => {
+      return callback(null, {
+        statusCode: 500, // 500 is status 'error'
+        body: JSON.stringify({
+          error: `There was an error updating todo id ${todo_id}.`
+        })
+      });
     });
 };
 

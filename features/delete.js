@@ -17,6 +17,14 @@ module.exports.deleteTodo = (event, context, callback) => {
           // integer that tells the number of rows that are deleted
         })
       });
+    })
+    .catch(error => {
+      callback(null, {
+        statusCode: 500, // 500 is status 'error'
+        body: JSON.stringify({
+          error: `There was an error fetching your todo with id: ${todo_id}.`
+        })
+      });
     });
 };
 

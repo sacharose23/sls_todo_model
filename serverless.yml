@@ -76,7 +76,7 @@ functions:
     # & the function is called 'read'
     events: 
       - http: 
-          path: todo
+          path: todo/{id}
           method: get
 
   createTodo:
